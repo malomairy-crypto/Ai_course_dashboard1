@@ -67,14 +67,14 @@ export default function Sidebar() {
   return (
     <aside className="fixed inset-y-0 left-0 z-50 flex w-56 flex-col bg-[#0d1117]">
       {/* Logo */}
-      <div className="flex h-16 items-center justify-center border-b border-white/[0.06] px-4">
+      <div className="flex h-24 items-center justify-center border-b border-white/[0.06] px-3">
         <Image
           src="/dashlogo.png"
           alt="Analytics"
-          width={180}
-          height={48}
+          width={220}
+          height={80}
           priority
-          style={{ objectFit: 'contain', width: 'auto', height: '40px' }}
+          style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
         />
       </div>
 
