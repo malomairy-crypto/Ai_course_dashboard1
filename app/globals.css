@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root {
+  color-scheme: light;
   --bg: #f0f2f8;
   --surface: #ffffff;
   --border: #e6eaf4;
@@ -19,9 +20,9 @@
   --font-mono: var(--font-geist-mono);
 }
 
-body {
-  background: var(--bg);
-  color: var(--text-primary);
+html, body {
+  background-color: #f0f2f8;
+  color: #1a2232;
 }
 
 /* Scrollbar */

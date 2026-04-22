@@ -196,7 +196,7 @@ export default function AnalyticsPage() {
               {recentOrders.map((order, i) => (
                 <tr
                   key={order.id}
-                  className={`border-b border-[#f0f2f8] transition-colors hover:bg-white/[0.02] ${
+                  className={`border-b border-[#f0f2f8] transition-colors hover:bg-[#f8f9fc] ${
                     i === recentOrders.length - 1 ? 'border-transparent' : ''
                   }`}
                 >
@@ -213,7 +213,7 @@ export default function AnalyticsPage() {
                   <td className="px-5 py-3.5">
                     <span
                       className={`rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${
-                        statusStyles[order.status] ?? 'border-slate-700 bg-slate-800 text-[#6b7a99]'
+                        statusStyles[order.status] ?? 'border-[#e6eaf4] bg-[#f5f6fa] text-[#6b7a99]'
                       }`}
                     >
                       {order.status}
