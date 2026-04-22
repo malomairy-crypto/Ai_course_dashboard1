@@ -9,7 +9,6 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  type TooltipProps,
 } from 'recharts'
 
 type DataPoint = {
@@ -18,7 +17,13 @@ type DataPoint = {
   expenses: number
 }
 
-function CustomTooltip({ active, payload, label }: TooltipProps<number, string>) {
+type CustomTooltipProps = {
+  active?: boolean
+  payload?: Array<{ name: string; value: number; color: string }>
+  label?: string
+}
+
+function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
   if (!active || !payload?.length) return null
   return (
     <div className="rounded-lg border border-[#2a2a35] bg-[#0d0d14] px-4 py-3 shadow-2xl">
