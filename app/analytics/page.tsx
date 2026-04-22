@@ -12,9 +12,9 @@ import {
 } from '../components/AnalyticsCharts'
 
 const statusStyles: Record<string, string> = {
-  Completed: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
-  'In Progress': 'bg-amber-500/10 text-amber-400 border-amber-500/20',
-  'Ready for Pickup': 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20',
+  Completed: 'bg-[#e6faf5] text-[#10b981] border-[#a7f3d0]',
+  'In Progress': 'bg-[#fef3e6] text-[#f59e0b] border-[#fcd34d]',
+  'Ready for Pickup': 'bg-[#eef2fd] text-[#4a7de8] border-[#bfcffe]',
 }
 
 const peakWeek = weeklyCustomers.reduce((a, b) => (a.customers > b.customers ? a : b))
@@ -61,13 +61,13 @@ export default function AnalyticsPage() {
       {/* Header */}
       <div className="flex items-start justify-between">
         <div>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-600">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#9aa5b8]">
             Riyadh Roast
           </p>
-          <h1 className="mt-1 text-2xl font-semibold tracking-tight text-slate-100">Analytics</h1>
+          <h1 className="mt-1 text-2xl font-semibold tracking-tight text-[#1a2232]">Analytics</h1>
         </div>
-        <div className="flex items-center gap-2 rounded-md border border-[#1a1a22] bg-[#0d0d11] px-3 py-1.5">
-          <span className="font-mono text-[11px] text-slate-500">Mar 2025 – Feb 2026</span>
+        <div className="flex items-center gap-2 rounded-md border border-[#e6eaf4] bg-white px-3 py-1.5">
+          <span className="font-mono text-[11px] text-[#9aa5b8]">Mar 2025 – Feb 2026</span>
         </div>
       </div>
 
@@ -76,18 +76,18 @@ export default function AnalyticsPage() {
         {topStats.map((s, i) => (
           <div
             key={s.label}
-            className="metric-card relative flex flex-col gap-4 overflow-hidden rounded-xl bg-[#0f0f15] p-5"
+            className="metric-card relative flex flex-col gap-4 overflow-hidden rounded-xl bg-white p-5"
             style={{
-              boxShadow: `0 0 0 1px rgba(255,255,255,0.05), 0 8px 32px rgba(0,0,0,0.4)`,
+              boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 4px 20px rgba(99,115,163,0.09)',
               animationDelay: `${0.05 + i * 0.06}s`,
             }}
           >
             <div className="absolute inset-x-0 top-0 h-[2px]" style={{ background: s.accent }} />
-            <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-slate-600">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#9aa5b8]">
               {s.label}
             </span>
             <div>
-              <p className="font-mono text-[26px] font-bold leading-none tracking-tight text-slate-100">
+              <p className="font-mono text-[26px] font-bold leading-none tracking-tight text-[#1a2232]">
                 {s.value}
               </p>
               <div className="mt-2 flex items-center gap-2">
@@ -97,7 +97,7 @@ export default function AnalyticsPage() {
                 >
                   {s.change}
                 </span>
-                <span className="text-[11px] text-slate-700">{s.period}</span>
+                <span className="text-[11px] text-[#b8c0d0]">{s.period}</span>
               </div>
             </div>
           </div>
@@ -108,28 +108,28 @@ export default function AnalyticsPage() {
       <div className="grid gap-4 lg:grid-cols-3">
         {/* Weekly customers area chart */}
         <div
-          className="col-span-2 rounded-xl bg-[#0f0f15] p-5"
-          style={{ boxShadow: '0 0 0 1px rgba(255,255,255,0.05), 0 8px 32px rgba(0,0,0,0.4)' }}
+          className="col-span-2 rounded-xl bg-white p-5"
+          style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 4px 20px rgba(99,115,163,0.09)' }}
         >
           <div className="mb-4">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-slate-600">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#9aa5b8]">
               Customer Traffic
             </p>
-            <p className="mt-0.5 text-sm font-medium text-slate-300">Weekly visits · 12 weeks</p>
+            <p className="mt-0.5 text-sm font-medium text-[#5a6a85]">Weekly visits · 12 weeks</p>
           </div>
           <WeeklyCustomersChart data={weeklyCustomers} />
         </div>
 
         {/* Sales by category donut */}
         <div
-          className="rounded-xl bg-[#0f0f15] p-5"
-          style={{ boxShadow: '0 0 0 1px rgba(255,255,255,0.05), 0 8px 32px rgba(0,0,0,0.4)' }}
+          className="rounded-xl bg-white p-5"
+          style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 4px 20px rgba(99,115,163,0.09)' }}
         >
           <div className="mb-4">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-slate-600">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#9aa5b8]">
               Sales Mix
             </p>
-            <p className="mt-0.5 text-sm font-medium text-slate-300">Revenue by category</p>
+            <p className="mt-0.5 text-sm font-medium text-[#5a6a85]">Revenue by category</p>
           </div>
           <SalesByCategoryChart data={salesByCategory} />
         </div>
@@ -137,24 +137,24 @@ export default function AnalyticsPage() {
 
       {/* Charts row 2 */}
       <div
-        className="rounded-xl bg-[#0f0f15] p-5"
-        style={{ boxShadow: '0 0 0 1px rgba(255,255,255,0.05), 0 8px 32px rgba(0,0,0,0.4)' }}
+        className="rounded-xl bg-white p-5"
+        style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 4px 20px rgba(99,115,163,0.09)' }}
       >
         <div className="mb-4 flex items-center justify-between">
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-slate-600">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#9aa5b8]">
               Revenue vs Expenses
             </p>
-            <p className="mt-0.5 text-sm font-medium text-slate-300">Monthly comparison · 12 months</p>
+            <p className="mt-0.5 text-sm font-medium text-[#5a6a85]">Monthly comparison · 12 months</p>
           </div>
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-sm bg-[#f97316]" />
-              <span className="font-mono text-[10px] text-slate-600">Revenue</span>
+              <span className="h-2 w-2 rounded-sm bg-[#7c8ef0]" />
+              <span className="font-mono text-[10px] text-[#9aa5b8]">Revenue</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-sm bg-[#1e293b]" />
-              <span className="font-mono text-[10px] text-slate-600">Expenses</span>
+              <span className="h-2 w-2 rounded-sm bg-[#e6eaf4]" />
+              <span className="font-mono text-[10px] text-[#9aa5b8]">Expenses</span>
             </div>
           </div>
         </div>
@@ -163,17 +163,17 @@ export default function AnalyticsPage() {
 
       {/* Orders table */}
       <div
-        className="rounded-xl bg-[#0f0f15]"
-        style={{ boxShadow: '0 0 0 1px rgba(255,255,255,0.05), 0 8px 32px rgba(0,0,0,0.4)' }}
+        className="rounded-xl bg-white"
+        style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 4px 20px rgba(99,115,163,0.09)' }}
       >
-        <div className="flex items-center justify-between border-b border-[#1a1a22] px-5 py-4">
+        <div className="flex items-center justify-between border-b border-[#e6eaf4] px-5 py-4">
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-slate-600">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#9aa5b8]">
               Recent Orders
             </p>
-            <p className="mt-0.5 text-sm font-medium text-slate-300">Latest {recentOrders.length} transactions</p>
+            <p className="mt-0.5 text-sm font-medium text-[#5a6a85]">Latest {recentOrders.length} transactions</p>
           </div>
-          <span className="rounded-full border border-[#1a1a22] px-3 py-1 font-mono text-[11px] text-slate-600">
+          <span className="rounded-full border border-[#e6eaf4] px-3 py-1 font-mono text-[11px] text-[#9aa5b8]">
             Feb 2026
           </span>
         </div>
@@ -181,11 +181,11 @@ export default function AnalyticsPage() {
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-[#1a1a22]">
+              <tr className="border-b border-[#e6eaf4]">
                 {['Order ID', 'Customer', 'Items', 'Amount', 'Status', 'Date'].map((h) => (
                   <th
                     key={h}
-                    className="px-5 py-3 text-left font-mono text-[10px] font-semibold uppercase tracking-[0.1em] text-slate-700"
+                    className="px-5 py-3 text-left font-mono text-[10px] font-semibold uppercase tracking-[0.1em] text-[#b8c0d0]"
                   >
                     {h}
                   </th>
@@ -196,15 +196,15 @@ export default function AnalyticsPage() {
               {recentOrders.map((order, i) => (
                 <tr
                   key={order.id}
-                  className={`border-b border-[#13131a] transition-colors hover:bg-white/[0.02] ${
+                  className={`border-b border-[#f0f2f8] transition-colors hover:bg-white/[0.02] ${
                     i === recentOrders.length - 1 ? 'border-transparent' : ''
                   }`}
                 >
-                  <td className="px-5 py-3.5 font-mono text-[12px] text-slate-500">{order.id}</td>
-                  <td className="px-5 py-3.5 text-[13px] font-medium text-slate-300">
+                  <td className="px-5 py-3.5 font-mono text-[12px] text-[#9aa5b8]">{order.id}</td>
+                  <td className="px-5 py-3.5 text-[13px] font-medium text-[#5a6a85]">
                     {order.customer}
                   </td>
-                  <td className="max-w-[220px] px-5 py-3.5 text-[12px] text-slate-500">
+                  <td className="max-w-[220px] px-5 py-3.5 text-[12px] text-[#9aa5b8]">
                     <span className="line-clamp-1">{order.product}</span>
                   </td>
                   <td className="px-5 py-3.5 font-mono text-[13px] font-semibold text-slate-200">
@@ -213,13 +213,13 @@ export default function AnalyticsPage() {
                   <td className="px-5 py-3.5">
                     <span
                       className={`rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${
-                        statusStyles[order.status] ?? 'border-slate-700 bg-slate-800 text-slate-400'
+                        statusStyles[order.status] ?? 'border-slate-700 bg-slate-800 text-[#6b7a99]'
                       }`}
                     >
                       {order.status}
                     </span>
                   </td>
-                  <td className="px-5 py-3.5 font-mono text-[11px] text-slate-700">{order.date}</td>
+                  <td className="px-5 py-3.5 font-mono text-[11px] text-[#b8c0d0]">{order.date}</td>
                 </tr>
               ))}
             </tbody>

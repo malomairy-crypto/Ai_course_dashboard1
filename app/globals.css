@@ -1,46 +1,39 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0e0e12;
-  --foreground: #e2e8f0;
+  --bg: #f0f2f8;
+  --surface: #ffffff;
+  --border: #e6eaf4;
+  --text-primary: #1a2232;
+  --text-secondary: #5a6a85;
+  --text-muted: #9aa5b8;
+  --blue: #4a7de8;
+  --blue-light: #eef2fd;
+  --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 20px rgba(99,115,163,0.09);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--bg);
+  --color-foreground: var(--text-primary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg);
+  color: var(--text-primary);
 }
 
 /* Scrollbar */
-::-webkit-scrollbar {
-  width: 4px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: #2a2a35;
-  border-radius: 2px;
-}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d0d6e8; border-radius: 2px; }
 
-/* Staggered nav link entry */
+/* Nav link entry */
 @keyframes navSlideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(-6px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
-
 .nav-link {
   opacity: 0;
   animation: navSlideIn 0.25s ease forwards;
@@ -48,32 +41,21 @@ body {
 
 /* Metric card entry */
 @keyframes cardFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
 .metric-card {
   opacity: 0;
   animation: cardFadeUp 0.35s ease forwards;
 }
-
 .metric-card:hover {
   transform: translateY(-2px);
   transition: transform 0.2s ease;
 }
 
-/* Chart bar entry */
+/* Chart bar */
 @keyframes barGrow {
   from { transform: scaleY(0); transform-origin: bottom; }
   to   { transform: scaleY(1); transform-origin: bottom; }
 }
-
-.chart-bar > div {
-  animation: barGrow 0.4s ease forwards;
-}
+.chart-bar > div { animation: barGrow 0.4s ease forwards; }
