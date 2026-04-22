@@ -65,9 +65,9 @@ export default function Sidebar() {
   const pathname = usePathname()
 
   return (
-    <aside className="fixed inset-y-0 left-0 z-50 flex w-56 flex-col border-r border-[#e6eaf4] bg-white">
-      {/* Logo — dark branded header */}
-      <div className="flex h-16 items-center justify-center bg-[#0d1117] px-4">
+    <aside className="fixed inset-y-0 left-0 z-50 flex w-56 flex-col bg-[#0d1117]">
+      {/* Logo */}
+      <div className="flex h-16 items-center justify-center border-b border-white/[0.06] px-4">
         <Image
           src="/dashlogo.png"
           alt="Analytics"
@@ -79,10 +79,10 @@ export default function Sidebar() {
       </div>
 
       {/* Nav sections */}
-      <div className="flex-1 overflow-y-auto border-t border-[#e6eaf4] py-4">
+      <div className="flex-1 overflow-y-auto py-4">
         {navSections.map((section, si) => (
           <div key={section.label} className={si > 0 ? 'mt-5' : ''}>
-            <p className="mb-1 px-5 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#9aa5b8]">
+            <p className="mb-1 px-5 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/30">
               {section.label}
             </p>
             <nav className="space-y-0.5 px-3">
@@ -95,15 +95,15 @@ export default function Sidebar() {
                     className={[
                       'nav-link group relative flex items-center gap-3 rounded-lg px-3 py-2.5 text-[13px] font-medium transition-all duration-150',
                       isActive
-                        ? 'bg-[#eef2fd] text-[#4a7de8]'
-                        : 'text-[#6b7a99] hover:bg-[#f5f6fa] hover:text-[#1a2232]',
+                        ? 'bg-white/10 text-white'
+                        : 'text-white/50 hover:bg-white/[0.06] hover:text-white/80',
                     ].join(' ')}
                     style={{ animationDelay: `${0.05 + (si * 3 + i) * 0.05}s` }}
                   >
                     {isActive && (
-                      <span className="absolute inset-y-0 left-0 w-[3px] rounded-full bg-[#4a7de8]" />
+                      <span className="absolute inset-y-0 left-0 w-[3px] rounded-full bg-[#3b8df8]" />
                     )}
-                    <span className={`shrink-0 transition-colors duration-150 ${isActive ? 'text-[#4a7de8]' : 'text-[#9aa5b8] group-hover:text-[#6b7a99]'}`}>
+                    <span className={`shrink-0 transition-colors duration-150 ${isActive ? 'text-[#3b8df8]' : 'text-white/30 group-hover:text-white/60'}`}>
                       <item.icon />
                     </span>
                     {item.label}
@@ -116,16 +116,16 @@ export default function Sidebar() {
       </div>
 
       {/* Footer / user */}
-      <div className="border-t border-[#e6eaf4] p-4">
-        <div className="flex items-center gap-3 rounded-lg px-2 py-1.5 hover:bg-[#f5f6fa] transition-colors cursor-pointer">
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#4a7de8]">
+      <div className="border-t border-white/[0.06] p-4">
+        <div className="flex items-center gap-3 rounded-lg px-2 py-1.5 hover:bg-white/[0.06] transition-colors cursor-pointer">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#3b8df8]">
             <span className="text-[12px] font-bold text-white">M</span>
           </div>
           <div className="flex min-w-0 flex-col">
-            <span className="truncate text-[13px] font-semibold text-[#1a2232]">Mohammed</span>
-            <span className="text-[11px] text-[#9aa5b8]">Admin</span>
+            <span className="truncate text-[13px] font-semibold text-white/90">Mohammed</span>
+            <span className="text-[11px] text-white/40">Admin</span>
           </div>
-          <svg className="ml-auto shrink-0 text-[#9aa5b8]" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg className="ml-auto shrink-0 text-white/30" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="6 9 12 15 18 9" />
           </svg>
         </div>
