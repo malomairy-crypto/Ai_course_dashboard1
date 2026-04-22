@@ -66,20 +66,20 @@ export default function Sidebar() {
 
   return (
     <aside className="fixed inset-y-0 left-0 z-50 flex w-56 flex-col border-r border-[#e6eaf4] bg-white">
-      {/* Logo */}
-      <div className="flex h-14 items-center border-b border-[#e6eaf4] px-5">
+      {/* Logo — dark branded header */}
+      <div className="flex h-16 items-center justify-center bg-[#0d1117] px-4">
         <Image
-          src="/logo-color.png"
-          alt="Delightrics"
-          width={130}
-          height={42}
+          src="/dashlogo.png"
+          alt="Analytics"
+          width={180}
+          height={48}
           priority
-          style={{ objectFit: 'contain', objectPosition: 'left center' }}
+          style={{ objectFit: 'contain', width: 'auto', height: '40px' }}
         />
       </div>
 
       {/* Nav sections */}
-      <div className="flex-1 overflow-y-auto py-4">
+      <div className="flex-1 overflow-y-auto border-t border-[#e6eaf4] py-4">
         {navSections.map((section, si) => (
           <div key={section.label} className={si > 0 ? 'mt-5' : ''}>
             <p className="mb-1 px-5 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#9aa5b8]">
