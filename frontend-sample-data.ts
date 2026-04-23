@@ -239,6 +239,44 @@ export const teamMembers = [
   },
 ];
 
+// --- Daily Data (last 7 days · Apr 17–23, 2026) ---
+export const dailyData = [
+  { day: "Thu Apr 17", revenue: 5340, orders: 189, customers: 171 },
+  { day: "Fri Apr 18", revenue: 7210, orders: 251, customers: 234 },
+  { day: "Sat Apr 19", revenue: 8640, orders: 298, customers: 276 },
+  { day: "Sun Apr 20", revenue: 7890, orders: 272, customers: 250 },
+  { day: "Mon Apr 21", revenue: 5020, orders: 174, customers: 158 },
+  { day: "Tue Apr 22", revenue: 4760, orders: 162, customers: 148 },
+  { day: "Wed Apr 23", revenue: 4820, orders: 163, customers: 145 },
+];
+
+// --- Weekly Report Data (last 8 weeks) ---
+export const weeklyReportData = [
+  { week: "Feb 24", revenue: 33600, orders: 1150, customers: 3210 },
+  { week: "Mar 3",  revenue: 34800, orders: 1190, customers: 3340 },
+  { week: "Mar 10", revenue: 34100, orders: 1165, customers: 3280 },
+  { week: "Mar 17", revenue: 35900, orders: 1230, customers: 3460 },
+  { week: "Mar 24", revenue: 36500, orders: 1250, customers: 3520 },
+  { week: "Mar 31", revenue: 37400, orders: 1280, customers: 3610 },
+  { week: "Apr 7",  revenue: 38900, orders: 1330, customers: 3750 },
+  { week: "Apr 14", revenue: 39200, orders: 1345, customers: 3840 },
+];
+
+// --- Quarterly Data (FY2025) ---
+export const quarterlyData = [
+  { quarter: "Q1 FY2025", revenue: 303500, expenses: 220500, orders: 10820, customers: 29400 },
+  { quarter: "Q2 FY2025", revenue: 337000, expenses: 239100, orders: 12030, customers: 32800 },
+  { quarter: "Q3 FY2025", revenue: 381300, expenses: 267500, orders: 13620, customers: 37100 },
+  { quarter: "Q4 FY2025", revenue: 465900, expenses: 295800, orders: 16640, customers: 42700 },
+];
+
+// --- Annual Data ---
+export const annualData = [
+  { year: "FY2023", revenue: 1050000, expenses:  790000, orders: 37500, customers:  98200 },
+  { year: "FY2024", revenue: 1240000, expenses:  895000, orders: 44300, customers: 115600 },
+  { year: "FY2025", revenue: 1487700, expenses: 1022900, orders: 53110, customers: 142000 },
+];
+
 // --- Notifications / Activity Feed ---
 export const recentActivity = [
   {
