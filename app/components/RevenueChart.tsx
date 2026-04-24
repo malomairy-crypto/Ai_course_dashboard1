@@ -22,14 +22,14 @@ type CustomTooltipProps = {
 function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
   if (!active || !payload?.length) return null
   return (
-    <div className="rounded-xl border border-[#e6eaf4] bg-white px-4 py-3 shadow-lg">
-      <p className="mb-2 text-[11px] font-semibold text-[#9aa5b8]">{label}</p>
+    <div className="rounded-xl border border-[#e8e4dc] bg-white px-4 py-3 shadow-lg">
+      <p className="mb-2 text-[11px] font-semibold text-[#9a9a9a]">{label}</p>
       {payload.map((entry) => (
         <div key={entry.name} className="flex items-center gap-2">
           <span className="h-1.5 w-1.5 rounded-full" style={{ background: entry.color }} />
-          <span className="text-[12px] capitalize text-[#5a6a85]">
+          <span className="text-[12px] capitalize text-[#5a5a5a]">
             {entry.name}:&nbsp;
-            <span className="font-semibold text-[#1a2232]">SAR {Number(entry.value).toLocaleString()}</span>
+            <span className="font-semibold text-[#0f0e0e]">SAR {Number(entry.value).toLocaleString()}</span>
           </span>
         </div>
       ))}
@@ -41,43 +41,43 @@ export default function RevenueChart({ data }: { data: DataPoint[] }) {
   return (
     <ResponsiveContainer width="100%" height={240}>
       <LineChart data={data} margin={{ top: 8, right: 8, left: -10, bottom: 0 }}>
-        <CartesianGrid stroke="#f0f2f8" strokeDasharray="4 4" vertical={false} />
+        <CartesianGrid stroke="#f5f3ef" strokeDasharray="4 4" vertical={false} />
         <XAxis
           dataKey="month"
-          tick={{ fontSize: 10, fill: '#9aa5b8', fontFamily: 'var(--font-geist-mono)' }}
+          tick={{ fontSize: 10, fill: '#9a9a9a', fontFamily: 'var(--font-geist-mono)' }}
           tickFormatter={(v: string) => v.split(' ')[0]}
           axisLine={false}
           tickLine={false}
           interval={0}
         />
         <YAxis
-          tick={{ fontSize: 10, fill: '#9aa5b8', fontFamily: 'var(--font-geist-mono)' }}
+          tick={{ fontSize: 10, fill: '#9a9a9a', fontFamily: 'var(--font-geist-mono)' }}
           tickFormatter={(v: number) => `${(v / 1000).toFixed(0)}k`}
           axisLine={false}
           tickLine={false}
           width={36}
         />
-        <Tooltip content={<CustomTooltip />} cursor={{ stroke: '#e6eaf4', strokeWidth: 1 }} />
+        <Tooltip content={<CustomTooltip />} cursor={{ stroke: '#e8e4dc', strokeWidth: 1 }} />
         <Legend
-          wrapperStyle={{ paddingTop: 16, fontSize: 11, fontFamily: 'var(--font-geist-mono)', color: '#9aa5b8' }}
+          wrapperStyle={{ paddingTop: 16, fontSize: 11, fontFamily: 'var(--font-geist-mono)', color: '#9a9a9a' }}
           iconType="circle"
           iconSize={6}
         />
         <Line
           type="monotone"
           dataKey="expenses"
-          stroke="#d0d6e8"
+          stroke="#d4cfc8"
           strokeWidth={1.5}
           dot={false}
-          activeDot={{ r: 4, fill: '#d0d6e8', strokeWidth: 0 }}
+          activeDot={{ r: 4, fill: '#d4cfc8', strokeWidth: 0 }}
         />
         <Line
           type="monotone"
           dataKey="revenue"
-          stroke="#7c8ef0"
+          stroke="#111111"
           strokeWidth={2.5}
           dot={false}
-          activeDot={{ r: 5, fill: '#7c8ef0', strokeWidth: 0 }}
+          activeDot={{ r: 5, fill: '#111111', strokeWidth: 0 }}
         />
       </LineChart>
     </ResponsiveContainer>

@@ -65,7 +65,7 @@ export default function Sidebar() {
   const pathname = usePathname()
 
   return (
-    <aside className="fixed inset-y-0 left-0 z-50 flex w-56 flex-col bg-[#0d1117]">
+    <aside className="fixed inset-y-0 left-0 z-50 flex w-56 flex-col bg-[#0c0b0b]">
       {/* Logo */}
       <div className="flex h-24 items-center justify-center border-b border-white/[0.06] px-3">
         <Image
@@ -101,9 +101,9 @@ export default function Sidebar() {
                     style={{ animationDelay: `${0.05 + (si * 3 + i) * 0.05}s` }}
                   >
                     {isActive && (
-                      <span className="absolute inset-y-0 left-0 w-[3px] rounded-full bg-[#3b8df8]" />
+                      <span className="absolute inset-y-0 left-0 w-[3px] rounded-full bg-white/50" />
                     )}
-                    <span className={`shrink-0 transition-colors duration-150 ${isActive ? 'text-[#3b8df8]' : 'text-white/30 group-hover:text-white/60'}`}>
+                    <span className={`shrink-0 transition-colors duration-150 ${isActive ? 'text-white' : 'text-white/30 group-hover:text-white/60'}`}>
                       <item.icon />
                     </span>
                     {item.label}
@@ -118,7 +118,7 @@ export default function Sidebar() {
       {/* Footer / user */}
       <div className="border-t border-white/[0.06] p-4">
         <div className="flex items-center gap-3 rounded-lg px-2 py-1.5 hover:bg-white/[0.06] transition-colors cursor-pointer">
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#3b8df8]">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/15">
             <span className="text-[12px] font-bold text-white">M</span>
           </div>
           <div className="flex min-w-0 flex-col">

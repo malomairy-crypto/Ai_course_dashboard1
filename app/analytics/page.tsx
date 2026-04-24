@@ -14,7 +14,7 @@ import {
 const statusStyles: Record<string, string> = {
   Completed: 'bg-[#e6faf5] text-[#10b981] border-[#a7f3d0]',
   'In Progress': 'bg-[#fef3e6] text-[#f59e0b] border-[#fcd34d]',
-  'Ready for Pickup': 'bg-[#eef2fd] text-[#4a7de8] border-[#bfcffe]',
+  'Ready for Pickup': 'bg-[#f0eeea] text-[#5a5a5a] border-[#e8e4dc]',
 }
 
 const peakWeek = weeklyCustomers.reduce((a, b) => (a.customers > b.customers ? a : b))
@@ -61,13 +61,13 @@ export default function AnalyticsPage() {
       {/* Header */}
       <div className="flex items-start justify-between">
         <div>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#9aa5b8]">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#9a9a9a]">
             Riyadh Roast
           </p>
-          <h1 className="mt-1 text-2xl font-semibold tracking-tight text-[#1a2232]">Analytics</h1>
+          <h1 className="mt-1 text-2xl font-semibold tracking-tight text-[#0f0e0e]">Analytics</h1>
         </div>
-        <div className="flex items-center gap-2 rounded-md border border-[#e6eaf4] bg-white px-3 py-1.5">
-          <span className="font-mono text-[11px] text-[#9aa5b8]">Mar 2025 – Feb 2026</span>
+        <div className="flex items-center gap-2 rounded-md border border-[#e8e4dc] bg-white px-3 py-1.5">
+          <span className="font-mono text-[11px] text-[#9a9a9a]">Mar 2025 – Feb 2026</span>
         </div>
       </div>
 
@@ -78,16 +78,16 @@ export default function AnalyticsPage() {
             key={s.label}
             className="metric-card relative flex flex-col gap-4 overflow-hidden rounded-xl bg-white p-5"
             style={{
-              boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 4px 20px rgba(99,115,163,0.09)',
+              boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 2px 12px rgba(0,0,0,0.06)',
               animationDelay: `${0.05 + i * 0.06}s`,
             }}
           >
             <div className="absolute inset-x-0 top-0 h-[2px]" style={{ background: s.accent }} />
-            <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#9aa5b8]">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#9a9a9a]">
               {s.label}
             </span>
             <div>
-              <p className="font-mono text-[26px] font-bold leading-none tracking-tight text-[#1a2232]">
+              <p className="font-mono text-[26px] font-bold leading-none tracking-tight text-[#0f0e0e]">
                 {s.value}
               </p>
               <div className="mt-2 flex items-center gap-2">
@@ -97,7 +97,7 @@ export default function AnalyticsPage() {
                 >
                   {s.change}
                 </span>
-                <span className="text-[11px] text-[#b8c0d0]">{s.period}</span>
+                <span className="text-[11px] text-[#c0bcb5]">{s.period}</span>
               </div>
             </div>
           </div>
@@ -109,13 +109,13 @@ export default function AnalyticsPage() {
         {/* Weekly customers area chart */}
         <div
           className="col-span-2 rounded-xl bg-white p-5"
-          style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 4px 20px rgba(99,115,163,0.09)' }}
+          style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 2px 12px rgba(0,0,0,0.06)' }}
         >
           <div className="mb-4">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#9aa5b8]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#9a9a9a]">
               Customer Traffic
             </p>
-            <p className="mt-0.5 text-sm font-medium text-[#5a6a85]">Weekly visits · 12 weeks</p>
+            <p className="mt-0.5 text-sm font-medium text-[#5a5a5a]">Weekly visits · 12 weeks</p>
           </div>
           <WeeklyCustomersChart data={weeklyCustomers} />
         </div>
@@ -123,13 +123,13 @@ export default function AnalyticsPage() {
         {/* Sales by category donut */}
         <div
           className="rounded-xl bg-white p-5"
-          style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 4px 20px rgba(99,115,163,0.09)' }}
+          style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 2px 12px rgba(0,0,0,0.06)' }}
         >
           <div className="mb-4">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#9aa5b8]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#9a9a9a]">
               Sales Mix
             </p>
-            <p className="mt-0.5 text-sm font-medium text-[#5a6a85]">Revenue by category</p>
+            <p className="mt-0.5 text-sm font-medium text-[#5a5a5a]">Revenue by category</p>
           </div>
           <SalesByCategoryChart data={salesByCategory} />
         </div>
@@ -138,23 +138,23 @@ export default function AnalyticsPage() {
       {/* Charts row 2 */}
       <div
         className="rounded-xl bg-white p-5"
-        style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 4px 20px rgba(99,115,163,0.09)' }}
+        style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 2px 12px rgba(0,0,0,0.06)' }}
       >
         <div className="mb-4 flex items-center justify-between">
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#9aa5b8]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#9a9a9a]">
               Revenue vs Expenses
             </p>
-            <p className="mt-0.5 text-sm font-medium text-[#5a6a85]">Monthly comparison · 12 months</p>
+            <p className="mt-0.5 text-sm font-medium text-[#5a5a5a]">Monthly comparison · 12 months</p>
           </div>
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-sm bg-[#7c8ef0]" />
-              <span className="font-mono text-[10px] text-[#9aa5b8]">Revenue</span>
+              <span className="h-2 w-2 rounded-sm bg-[#111111]" />
+              <span className="font-mono text-[10px] text-[#9a9a9a]">Revenue</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-sm bg-[#e6eaf4]" />
-              <span className="font-mono text-[10px] text-[#9aa5b8]">Expenses</span>
+              <span className="h-2 w-2 rounded-sm bg-[#d4cfc8]" />
+              <span className="font-mono text-[10px] text-[#9a9a9a]">Expenses</span>
             </div>
           </div>
         </div>
@@ -164,16 +164,16 @@ export default function AnalyticsPage() {
       {/* Orders table */}
       <div
         className="rounded-xl bg-white"
-        style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 4px 20px rgba(99,115,163,0.09)' }}
+        style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 2px 12px rgba(0,0,0,0.06)' }}
       >
-        <div className="flex items-center justify-between border-b border-[#e6eaf4] px-5 py-4">
+        <div className="flex items-center justify-between border-b border-[#e8e4dc] px-5 py-4">
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#9aa5b8]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#9a9a9a]">
               Recent Orders
             </p>
-            <p className="mt-0.5 text-sm font-medium text-[#5a6a85]">Latest {recentOrders.length} transactions</p>
+            <p className="mt-0.5 text-sm font-medium text-[#5a5a5a]">Latest {recentOrders.length} transactions</p>
           </div>
-          <span className="rounded-full border border-[#e6eaf4] px-3 py-1 font-mono text-[11px] text-[#9aa5b8]">
+          <span className="rounded-full border border-[#e8e4dc] px-3 py-1 font-mono text-[11px] text-[#9a9a9a]">
             Feb 2026
           </span>
         </div>
@@ -181,11 +181,11 @@ export default function AnalyticsPage() {
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-[#e6eaf4]">
+              <tr className="border-b border-[#e8e4dc]">
                 {['Order ID', 'Customer', 'Items', 'Amount', 'Status', 'Date'].map((h) => (
                   <th
                     key={h}
-                    className="px-5 py-3 text-left font-mono text-[10px] font-semibold uppercase tracking-[0.1em] text-[#b8c0d0]"
+                    className="px-5 py-3 text-left font-mono text-[10px] font-semibold uppercase tracking-[0.1em] text-[#c0bcb5]"
                   >
                     {h}
                   </th>
@@ -196,30 +196,30 @@ export default function AnalyticsPage() {
               {recentOrders.map((order, i) => (
                 <tr
                   key={order.id}
-                  className={`border-b border-[#f0f2f8] transition-colors hover:bg-[#f8f9fc] ${
+                  className={`border-b border-[#f5f3ef] transition-colors hover:bg-[#f5f4f1] ${
                     i === recentOrders.length - 1 ? 'border-transparent' : ''
                   }`}
                 >
-                  <td className="px-5 py-3.5 font-mono text-[12px] text-[#9aa5b8]">{order.id}</td>
-                  <td className="px-5 py-3.5 text-[13px] font-medium text-[#5a6a85]">
+                  <td className="px-5 py-3.5 font-mono text-[12px] text-[#9a9a9a]">{order.id}</td>
+                  <td className="px-5 py-3.5 text-[13px] font-medium text-[#5a5a5a]">
                     {order.customer}
                   </td>
-                  <td className="max-w-[220px] px-5 py-3.5 text-[12px] text-[#9aa5b8]">
+                  <td className="max-w-[220px] px-5 py-3.5 text-[12px] text-[#9a9a9a]">
                     <span className="line-clamp-1">{order.product}</span>
                   </td>
-                  <td className="px-5 py-3.5 font-mono text-[13px] font-semibold text-slate-200">
+                  <td className="px-5 py-3.5 font-mono text-[13px] font-semibold text-[#0f0e0e]">
                     {order.amount}
                   </td>
                   <td className="px-5 py-3.5">
                     <span
                       className={`rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${
-                        statusStyles[order.status] ?? 'border-[#e6eaf4] bg-[#f5f6fa] text-[#6b7a99]'
+                        statusStyles[order.status] ?? 'border-[#e8e4dc] bg-[#f5f4f1] text-[#5a5a5a]'
                       }`}
                     >
                       {order.status}
                     </span>
                   </td>
-                  <td className="px-5 py-3.5 font-mono text-[11px] text-[#b8c0d0]">{order.date}</td>
+                  <td className="px-5 py-3.5 font-mono text-[11px] text-[#c0bcb5]">{order.date}</td>
                 </tr>
               ))}
             </tbody>
