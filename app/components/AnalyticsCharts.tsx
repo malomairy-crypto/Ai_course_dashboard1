@@ -16,9 +16,9 @@ import {
   Legend,
 } from 'recharts'
 
-type WeeklyPoint = { week: string; customers: number }
-type MonthlyPoint = { month: string; revenue: number; expenses: number }
-type CategoryPoint = { category: string; value: number; color: string }
+type MonthlyRevPoint  = { month: string; revenue: number }
+type MonthlyRevExpPoint = { month: string; revenue: number; expenses: number }
+type CategoryPoint    = { category: string; value: number; color: string }
 
 type TooltipPayload = {
   active?: boolean
@@ -37,9 +37,7 @@ function LightTooltip({ active, payload, label }: TooltipPayload) {
           <span className="text-[12px] text-[#5a5a5a]">
             {entry.name}:{' '}
             <span className="font-semibold text-[#0f0e0e]">
-              {entry.name !== 'customers'
-                ? `SAR ${entry.value.toLocaleString()}`
-                : entry.value.toLocaleString()}
+              SAR {entry.value.toLocaleString()}
             </span>
           </span>
         </div>
@@ -48,28 +46,28 @@ function LightTooltip({ active, payload, label }: TooltipPayload) {
   )
 }
 
-export function WeeklyCustomersChart({ data }: { data: WeeklyPoint[] }) {
+export function MonthlyRevenueChart({ data }: { data: MonthlyRevPoint[] }) {
   return (
     <ResponsiveContainer width="100%" height={220}>
       <AreaChart data={data} margin={{ top: 8, right: 8, left: -10, bottom: 0 }}>
         <defs>
-          <linearGradient id="custGrad" x1="0" y1="0" x2="0" y2="1">
+          <linearGradient id="revGrad" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#111111" stopOpacity={0.1} />
             <stop offset="100%" stopColor="#111111" stopOpacity={0} />
           </linearGradient>
         </defs>
         <CartesianGrid stroke="#f5f3ef" strokeDasharray="4 4" vertical={false} />
         <XAxis
-          dataKey="week"
+          dataKey="month"
           tick={{ fontSize: 10, fill: '#9a9a9a', fontFamily: 'var(--font-geist-mono)' }}
-          tickFormatter={(v: string) => v.replace('Week ', 'W')}
+          tickFormatter={(v: string) => v.split(' ')[0]}
           axisLine={false}
           tickLine={false}
-          interval={1}
+          interval={0}
         />
         <YAxis
           tick={{ fontSize: 10, fill: '#9a9a9a', fontFamily: 'var(--font-geist-mono)' }}
-          tickFormatter={(v: number) => `${(v / 1000).toFixed(1)}k`}
+          tickFormatter={(v: number) => `${(v / 1000).toFixed(0)}k`}
           axisLine={false}
           tickLine={false}
           width={36}
@@ -77,10 +75,10 @@ export function WeeklyCustomersChart({ data }: { data: WeeklyPoint[] }) {
         <Tooltip content={<LightTooltip />} cursor={{ stroke: '#e8e4dc', strokeWidth: 1 }} />
         <Area
           type="monotone"
-          dataKey="customers"
+          dataKey="revenue"
           stroke="#111111"
           strokeWidth={2}
-          fill="url(#custGrad)"
+          fill="url(#revGrad)"
           dot={false}
           activeDot={{ r: 4, fill: '#111111', strokeWidth: 0 }}
         />
@@ -89,7 +87,7 @@ export function WeeklyCustomersChart({ data }: { data: WeeklyPoint[] }) {
   )
 }
 
-export function MonthlyComparisonChart({ data }: { data: MonthlyPoint[] }) {
+export function MonthlyComparisonChart({ data }: { data: MonthlyRevExpPoint[] }) {
   return (
     <ResponsiveContainer width="100%" height={220}>
       <BarChart data={data} margin={{ top: 8, right: 8, left: -10, bottom: 0 }} barGap={2}>
@@ -116,7 +114,7 @@ export function MonthlyComparisonChart({ data }: { data: MonthlyPoint[] }) {
           iconSize={6}
         />
         <Bar dataKey="expenses" name="expenses" fill="#d4cfc8" radius={[3, 3, 0, 0]} />
-        <Bar dataKey="revenue" name="revenue" fill="#111111" radius={[3, 3, 0, 0]} />
+        <Bar dataKey="revenue"  name="revenue"  fill="#111111" radius={[3, 3, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
   )
@@ -128,7 +126,15 @@ export function SalesByCategoryChart({ data }: { data: CategoryPoint[] }) {
     <div className="flex flex-col items-center gap-4">
       <ResponsiveContainer width="100%" height={200}>
         <PieChart>
-          <Pie data={data} cx="50%" cy="50%" innerRadius={58} outerRadius={82} paddingAngle={3} dataKey="value">
+          <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            innerRadius={58}
+            outerRadius={82}
+            paddingAngle={3}
+            dataKey="value"
+          >
             {data.map((entry, i) => (
               <Cell key={i} fill={entry.color} stroke="transparent" />
             ))}
@@ -156,8 +162,12 @@ export function SalesByCategoryChart({ data }: { data: CategoryPoint[] }) {
               <span className="text-[12px] text-[#5a5a5a]">{d.category}</span>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-[12px] font-medium text-[#0f0e0e]">SAR {(d.value / 1000).toFixed(0)}k</span>
-              <span className="w-10 text-right text-[11px] text-[#9a9a9a]">{((d.value / total) * 100).toFixed(1)}%</span>
+              <span className="text-[12px] font-medium text-[#0f0e0e]">
+                SAR {(d.value / 1000).toFixed(1)}k
+              </span>
+              <span className="w-10 text-right text-[11px] text-[#9a9a9a]">
+                {((d.value / total) * 100).toFixed(1)}%
+              </span>
             </div>
           </div>
         ))}
