@@ -1,5 +1,6 @@
 import { supabase } from '../lib/supabase'
 import RevenueChart from './components/RevenueChart'
+import AiInsightsCard from './components/AiInsightsCard'
 
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
 
@@ -242,6 +243,9 @@ export default async function DashboardPage() {
           </div>
         ))}
       </div>
+
+      {/* AI Insights */}
+      <AiInsightsCard />
 
       {/* Bottom row */}
       <div className="grid gap-4 lg:grid-cols-3">
