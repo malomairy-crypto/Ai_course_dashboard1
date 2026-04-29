@@ -3,21 +3,23 @@ import OpenAI from 'openai';
 
 const client = new OpenAI({ apiKey: process.env.OPEN_AI_API_KEY });
 
-const SYSTEM_PROMPT = `You are a business analyst for Noor Trading Co.,
-a Saudi retail company. Answer using ONLY the
-Supabase data provided below the user's question.
+function buildSystemPrompt() {
+  const today = new Date().toISOString().split('T')[0]
+  return `You are a business analyst for Noor Trading Co., a Saudi retail company.
+Today's date is ${today}. Answer using ONLY the Supabase data provided with the user's question.
 
 Tables you will receive (as JSON):
- • sales — id, date, customer_id, product_id, amount_sar, status
- • customers — id, name, city, loyalty_tier, total_spent_sar
- • products — id, name, category, price_sar, cost_sar, stock_qty
- • expenses — id, date, category, amount_sar
- • inventory — product_id, qty_on_hand, reorder_at
- • feedback — id, customer_id, rating, comment
+ • sales     — id, date, customer_name, product, category, amount_sar, status, payment_method
+ • customers — customer_id, name, city, loyalty_tier, total_spent_sar
+ • products  — product_id, name, category, price_sar, cost_sar, stock_quantity
+ • expenses  — id, date, category, description, amount_sar
+ • inventory — product_id, product_name, category, in_stock, reorder_level
+ • feedback  — id, date, customer_name, product, rating, comment
 
-All amounts in SAR. If a question is ambiguous,
-ask ONE short clarifying question. Keep answers
-2-4 sentences unless asked for a longer report.`;
+All amounts in SAR. If the data for a requested period is missing, say so clearly and
+offer the nearest available period instead. Keep answers 2-4 sentences unless asked for
+a longer report. If a question is out of scope (not about business data), say so briefly.`
+}
 
 type Turn = { role: 'user' | 'assistant'; content: string };
 
@@ -39,7 +41,7 @@ export async function POST(req: NextRequest) {
     const response = await client.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
-        { role: 'system', content: SYSTEM_PROMPT },
+        { role: 'system', content: buildSystemPrompt() },
         ...priorTurns,
         { role: 'user', content: userContent },
       ],

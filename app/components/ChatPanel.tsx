@@ -12,12 +12,12 @@ type MicState = 'idle' | 'recording' | 'transcribing'
 
 async function fetchAllData() {
   const [sales, customers, products, expenses, inventory, feedback] = await Promise.all([
-    supabase.from('sales').select('id, date, customer_id, product_id, amount_sar, status').limit(500),
-    supabase.from('customers').select('id, name, city, loyalty_tier, total_spent_sar'),
-    supabase.from('products').select('id, name, category, price_sar, cost_sar, stock_qty'),
-    supabase.from('expenses').select('id, date, category, amount_sar').limit(300),
-    supabase.from('inventory').select('product_id, qty_on_hand, reorder_at'),
-    supabase.from('feedback').select('id, customer_id, rating, comment'),
+    supabase.from('sales').select('id, date, customer_name, product, category, amount_sar, status, payment_method').limit(500),
+    supabase.from('customers').select('customer_id, name, city, loyalty_tier, total_spent_sar'),
+    supabase.from('products').select('product_id, name, category, price_sar, cost_sar, stock_quantity'),
+    supabase.from('expenses').select('id, date, category, description, amount_sar').limit(300),
+    supabase.from('inventory').select('product_id, product_name, category, in_stock, reorder_level'),
+    supabase.from('feedback').select('id, date, customer_name, product, rating, comment'),
   ])
   return {
     sales:     sales.data     ?? [],
